@@ -1,0 +1,6 @@
+@DreamSoftWebApi_HostAddress = http://localhost:5279
+
+GET {{DreamSoftWebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
