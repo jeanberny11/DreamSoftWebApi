@@ -16,4 +16,6 @@ public class Account
     public Gender Gender { get; set; } = null!;
     public bool Active { get; set; }
     public string AccountNumber { get; set; } = null!;
+    public string IdNumber { get; set; } = null!;
+    public IdType IdType { get; set; } = null!;
 }

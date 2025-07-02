@@ -5,6 +5,7 @@ using DreamSoftLogic.Config;
 using DreamSoftModel.Config;
 using DreamSoftModel.Models.SecurityConfig;
 using DreamSoftWebApi.Permissions;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -86,6 +87,9 @@ builder.Services.AddAuthentication(options =>
             }
         };
     });
+
+builder.Services.AddFluentValidationAutoValidation();
+
 // setup repositories service
 builder.Services.AddDreamSoftData();
 //setup logic services
@@ -101,6 +105,7 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod()
             .AllowAnyHeader());
 });
+
 
 var app = builder.Build();
 

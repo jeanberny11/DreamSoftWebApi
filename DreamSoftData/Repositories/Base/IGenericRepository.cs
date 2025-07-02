@@ -1,4 +1,6 @@
 ﻿using DreamSoftData.Entities.Base;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace DreamSoftData.Repositories.Base;
 
@@ -8,9 +10,11 @@ public interface IGenericRepository<TE, in T> where TE : class, IEntity<T> where
 
     Task<TE?> GetByIdAsync(T id);
 
-    Task<TE> CreateAsync(TE entity);
+    Task<TE> CreateAsync(TE entity, bool autoPersist = true);
 
-    Task<TE> UpdateAsync(TE entity);
+    Task<TE> UpdateAsync(TE entity, bool autoPersist = true);
 
-    Task<TE> DeleteAsync(TE entity);
+    Task<TE> DeleteAsync(TE entity, bool autoPersist = true);
+    Task SaveChangesAsync();
+    Task<IDbContextTransaction> GetTransaction();
 }

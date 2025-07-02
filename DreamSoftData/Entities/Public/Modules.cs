@@ -17,6 +17,7 @@ public class Modules : IEntity<int>
     [Column("active")] public bool Active { get; set; }
 
     [Column("icon")] [MaxLength(50)] public string Icon { get; set; } = null!;
+    [Column("sortorder")][MaxLength(50)] public int SortOrder { get; set; }
 
     [InverseProperty("Module")]
     public virtual ICollection<MenuOptions> MenuOptions { get; set; } = new HashSet<MenuOptions>();
