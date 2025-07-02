@@ -6,4 +6,5 @@ public class MenuGroup
     public string Name { get; set; } = null!;
     public bool Active { get; set; }
     public string Icon { get; set; } = null!;
+    public int SortOrder { get; set; }
 }

@@ -5,5 +5,6 @@ namespace DreamSoftData.Repositories.Public.Interface;
 
 public interface IRoleOptionsRepository : IGenericRepository<RoleOptions, int>
 {
-    Task<IEnumerable<RoleOptions>> GetRolePermitedOptions(int roleId);
+    Task<IEnumerable<RoleOptions>> GetRolePermittedOptionsAsync(int roleId);
+    Task<IEnumerable<RoleOptions>> GetRoleMenuAsync(int roleId);
 }

@@ -18,6 +18,7 @@ public class DreamSoftDbContext(DbContextOptions<DreamSoftDbContext> options) : 
     public DbSet<Roles> Roles { get; set; } = null!;
     public DbSet<Users> Users { get; set; } = null!;
     public DbSet<RefreshTokens> RefreshTokens { get; set; } = null!;
+    public DbSet<DefaultValSetups> DefaultValSetups { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -39,6 +40,7 @@ public class DreamSoftDbContext(DbContextOptions<DreamSoftDbContext> options) : 
         modelBuilder.Entity<Roles>().ToTable("roles");
         modelBuilder.Entity<Users>().ToTable("users");
         modelBuilder.Entity<RefreshTokens>().ToTable("refreshtokens");
+        modelBuilder.Entity<DefaultValSetups>().ToTable("defaultvaluesetup");
 
         // Add any additional configuration or override defaults here
     }

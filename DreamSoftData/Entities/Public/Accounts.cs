@@ -36,11 +36,15 @@ public class Accounts : IEntity<int>
 
     [Column("active")] public bool Active { get; set; }
 
-    [Column("cdate")] public TimeSpan CDate { get; set; }
+    [Column("cdate")] public DateTime CDate { get; set; }
 
     [Column("accountnumber")]
     [MaxLength(20)]
     public string AccountNumber { get; set; } = null!;
+    [Column("idnumber")]
+    [MaxLength(50)]
+    public string IdNumber { get; set; } = null!;
+    [Column("idtypeid")] public int IdTypeId { get; set; }
 
     [ForeignKey("CountryId")] public Countries Country { get; set; } = null!;
 
@@ -51,8 +55,10 @@ public class Accounts : IEntity<int>
     [ForeignKey("AccountTypeId")] public AccountTypes AccountType { get; set; } = null!;
 
     [ForeignKey("GenderId")] public Genders Gender { get; set; } = null!;
+    [ForeignKey("IdTypeId")] public IdTypes IdType { get; set; } = null!;
 
     [InverseProperty("Account")] public virtual ICollection<Roles> Roles { get; set; } = new HashSet<Roles>();
 
     [InverseProperty("Account")] public virtual ICollection<Users> Users { get; set; } = new HashSet<Users>();
+
 }

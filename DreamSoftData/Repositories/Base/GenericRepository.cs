@@ -1,6 +1,7 @@
 ﻿using DreamSoftData.Context;
 using DreamSoftData.Entities.Base;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace DreamSoftData.Repositories.Base;
 
@@ -10,34 +11,92 @@ public abstract class GenericRepository<TE, T>(DreamSoftDbContext dbContext) : I
 {
     protected readonly DbSet<TE> DbSet = dbContext.Set<TE>();
 
-    public virtual async Task<TE> CreateAsync(TE entity)
+    /// <summary>
+    /// Adds a new entity to the context and optionally saves changes to the database.
+    /// </summary>
+    /// <param name="entity">The entity to create.</param>
+    /// <param name="autoPersist">
+    /// If set to <c>true</c> (default), the changes are immediately saved to the database by calling <see cref="SaveChangesAsync"/>.
+    /// If <c>false</c>, you must call <see cref="SaveChangesAsync"/> manually to persist the changes.
+    /// </param>
+    /// <returns>The added entity.</returns>
+    public virtual async Task<TE> CreateAsync(TE entity,bool autoPersist = true)
     {
         await DbSet.AddAsync(entity);
-        await dbContext.SaveChangesAsync();
+        if (autoPersist)
+        {
+            await SaveChangesAsync();
+        }
         return entity;
     }
 
-    public virtual async Task<TE> DeleteAsync(TE entity)
+    /// <summary>
+    /// Delete an existing entity in the context and optionally saves changes to the database.
+    /// </summary>
+    /// <param name="entity">The entity to delete.</param>
+    /// <param name="autoPersist">
+    /// If set to <c>true</c> (default), the changes are immediately saved to the database by calling <see cref="SaveChangesAsync"/>.
+    /// If <c>false</c>, you must call <see cref="SaveChangesAsync"/> manually to persist the changes.
+    /// </param>
+    /// <returns>The deleted entity.</returns>
+    public virtual async Task<TE> DeleteAsync(TE entity, bool autoPersist = true)
     {
-        DbSet.Remove(entity);
-        await dbContext.SaveChangesAsync();
-        return entity;
+        var result = DbSet.Remove(entity);
+        if (autoPersist)
+        {
+            await SaveChangesAsync();
+        }
+        return result.Entity;
     }
 
+    /// <summary>
+    /// Persist all change to the database. Must call SaveChangesAsync() to persist.
+    /// </summary>
+    public async Task SaveChangesAsync()
+    {
+        await dbContext.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Retrieve a database transaction.
+    /// </summary>
+    public Task<IDbContextTransaction> GetTransaction()
+    {
+        return dbContext.Database.BeginTransactionAsync();
+    }
+
+    /// <summary>
+    /// Retrieve all entities of type TE from the database.
+    /// </summary>
     public virtual async Task<IEnumerable<TE>> GetAllAsync()
     {
         return await DbSet.ToListAsync();
     }
 
+    /// <summary>
+    /// Retrieve an entity by its ID.
+    /// </summary>
     public virtual Task<TE?> GetByIdAsync(T id)
     {
         return DbSet.FindAsync(id).AsTask();
     }
 
-    public virtual async Task<TE> UpdateAsync(TE entity)
+    /// <summary>
+    /// Update an existing entity in the context and optionally saves changes to the database.
+    /// </summary>
+    /// <param name="entity">The entity to update.</param>
+    /// <param name="autoPersist">
+    /// If set to <c>true</c> (default), the changes are immediately saved to the database by calling <see cref="SaveChangesAsync"/>.
+    /// If <c>false</c>, you must call <see cref="SaveChangesAsync"/> manually to persist the changes.
+    /// </param>
+    /// <returns>The updated entity.</returns>
+    public virtual async Task<TE> UpdateAsync(TE entity, bool autoPersist = true)
     {
-        DbSet.Update(entity);
-        await dbContext.SaveChangesAsync();
-        return entity;
+        var result = DbSet.Update(entity);
+        if (autoPersist)
+        {
+            await SaveChangesAsync();
+        }
+        return result.Entity;
     }
 }

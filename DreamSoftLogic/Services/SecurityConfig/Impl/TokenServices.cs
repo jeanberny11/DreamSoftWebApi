@@ -10,6 +10,7 @@ using DreamSoftLogic.Exceptions.Security;
 using DreamSoftLogic.Services.SecurityConfig.Interface;
 using DreamSoftModel.Models.Public;
 using DreamSoftModel.Models.SecurityConfig;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
@@ -21,15 +22,20 @@ public class TokenServices(
     IUsersRepository usersRepository,
     IRefreshTokenRepository refreshTokenRepository,
     IMapper mapper,
-    IRoleOptionsRepository roleOptionsRepository) : ITokenServices
+    IRoleOptionsRepository roleOptionsRepository,
+    IPasswordHasher<Users> passwordHasher) : ITokenServices
 {
     private readonly JwtSetting _jwtSetting = jwtOptions.Value;
 
     public async Task<TokenResponse> GetAccessToken(string username, string password, string ipaddress)
     {
-        var user = await usersRepository.GetAuthUser(username, password) ??
-                   throw new UnAuthorizedUserException("No user was found with that username or password");
-        var roleOptions = await roleOptionsRepository.GetRolePermitedOptions(user.RoleId);
+        var user = await usersRepository.GetByUsername(username) ??
+                   throw new UnAuthorizedUserException("No user was found with that username.");
+        var passwordVerificationResult = passwordHasher.VerifyHashedPassword(user, user.Password, password);
+        if (passwordVerificationResult == PasswordVerificationResult.Failed)
+            throw new UnAuthorizedUserException("Invalid password.");
+
+        var roleOptions = await roleOptionsRepository.GetRolePermittedOptionsAsync(user.RoleId);
         try
         {
             var token = GenerateAccessToken(mapper.Map<User>(user), mapper.Map<List<RoleOption>>(roleOptions.ToList()));
@@ -82,7 +88,7 @@ public class TokenServices(
 
         var user = await usersRepository.GetByIdAsync(refreshTokenEntity.UserId) ??
                    throw new UnAuthorizedUserException("No user was found with that refresh token.");
-        var roleOptions = await roleOptionsRepository.GetRolePermitedOptions(user.RoleId);
+        var roleOptions = await roleOptionsRepository.GetRolePermittedOptionsAsync(user.RoleId);
         try
         {
             var token = GenerateAccessToken(mapper.Map<User>(user), mapper.Map<List<RoleOption>>(roleOptions.ToList()));

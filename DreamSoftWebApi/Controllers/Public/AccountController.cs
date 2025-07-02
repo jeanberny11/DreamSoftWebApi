@@ -1,11 +1,17 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using DreamSoftLogic.Services.Public.Interface;
+using DreamSoftModel.Models.Public;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DreamSoftWebApi.Controllers.Public;
 
 [ApiController]
 [Route("dreamsoftapi/[controller]")]
-[Authorize]
-public class AccountController
+public class AccountController(IAccountServices services):ControllerBase
 {
+    [HttpPost("[action]")]
+    public async Task<ActionResult<Account>> CreateAccount([FromBody] AccountCreate account)
+    {
+        var result = await services.CreateNewAccount(account);
+            return result;
+    }
 }

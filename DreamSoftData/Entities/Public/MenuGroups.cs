@@ -18,6 +18,8 @@ public class MenuGroups : IEntity<int>
 
     [Column("icon")] [MaxLength(50)] public string Icon { get; set; } = null!;
 
+    [Column("sortorder")][MaxLength(50)] public int SortOrder { get; set; }
+
     [InverseProperty("MenuGroup")]
     public virtual ICollection<MenuOptions> MenuOptions { get; set; } = new HashSet<MenuOptions>();
 }

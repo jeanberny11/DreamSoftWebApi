@@ -17,11 +17,24 @@ public class UsersRepository(DreamSoftDbContext dbContext)
             .FirstOrDefaultAsync(u => u.UserName == username && u.Password == password);
     }
 
+    public Task<Users?> GetByUsername(string username)
+    {
+        return DbSet
+            .Include(u => u.Account)
+            .Include(u => u.Role)
+            .FirstOrDefaultAsync(u => u.UserName == username);
+    }
+
     public override Task<Users?> GetByIdAsync(int id)
     {
         return DbSet
             .Include(u => u.Account)
             .Include(u => u.Role)
             .FirstOrDefaultAsync(u => u.UserId == id);
+    }
+
+    public Task<bool> IsUserExists(string username)
+    {
+        return DbSet.AnyAsync(u => u.UserName == username);
     }
 }
