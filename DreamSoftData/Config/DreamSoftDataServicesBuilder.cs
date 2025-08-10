@@ -1,5 +1,9 @@
-﻿using DreamSoftData.Repositories.Public.Impl;
+﻿using DreamSoftData.Repositories.Inventory.Impl;
+using DreamSoftData.Repositories.Inventory.Interface;
+using DreamSoftData.Repositories.Public.Impl;
 using DreamSoftData.Repositories.Public.Interface;
+using DreamSoftData.Repositories.Sales.Impl;
+using DreamSoftData.Repositories.Sales.Interface;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DreamSoftData.Config;
@@ -26,6 +30,19 @@ public static class DreamSoftDataServicesBuilder
             .AddScoped<IUsersRepository, UsersRepository>()
             .AddScoped<IRefreshTokenRepository, RefreshTokenRepository>()
             .AddScoped<IDefaultValSetupsRepository,DefaultValSetupRepository>()
-            .AddScoped<IAccountTypesRepository,AccountTypesRepository>();
+            .AddScoped<IAccountTypesRepository,AccountTypesRepository>()
+            .AddScoped<IMaritalStatusRepository,MaritalStatusRepository>()
+            .AddScoped<ITaxTypeRepository,TaxTypeRepository>()
+            .AddScoped<IPricesRepository,PricesRepository>()
+            .AddScoped<ICustomersRepository,CustomersRepository>()
+            // Inventory repositories
+            .AddScoped<IBrandsRepository, BrandsRepository>()
+            .AddScoped<ICategoriesRepository, CategoriesRepository>()
+            .AddScoped<ILocationsRepository, LocationsRepository>()
+            .AddScoped<IModelsRepository, ModelsRepository>()
+            .AddScoped<IProductsRepository, ProductsRepository>()
+            .AddScoped<ISuppliersRepository, SuppliersRepository>()
+            .AddScoped<IUnitsRepository, UnitsRepository>()
+            .AddScoped<IWarehousesRepository, WarehousesRepository>(); 
     }
 }
