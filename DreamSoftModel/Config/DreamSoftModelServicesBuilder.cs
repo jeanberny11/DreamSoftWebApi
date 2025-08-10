@@ -3,6 +3,7 @@ using DreamSoftModel.Profiles;
 using DreamSoftModel.Validations.Public;
 using Microsoft.Extensions.DependencyInjection;
 using FluentValidation;
+using DreamSoftModel.Validations.Inventory;
 
 namespace DreamSoftModel.Config;
 
@@ -27,6 +28,8 @@ public static class DreamSoftModelServicesBuilder
 
     public static IServiceCollection AddValidatorServices(this IServiceCollection services)
     {
-        return services.AddValidatorsFromAssemblyContaining<AccountValidator>();
+        return services.AddValidatorsFromAssemblyContaining<AccountValidator>()
+            .AddValidatorsFromAssemblyContaining<SupplierValidator>()
+            .AddValidatorsFromAssemblyContaining<ProductValidator>();
     }
 }
