@@ -1,7 +1,11 @@
-﻿using DreamSoftData.Repositories.Inventory.Impl;
+﻿using DreamSoftData.Repositories.Authentication.Impl;
+using DreamSoftData.Repositories.Authentication.Interfaces;
+using DreamSoftData.Repositories.Generics.Impl;
+using DreamSoftData.Repositories.Generics.Interfaces;
+using DreamSoftData.Repositories.Inventory.Impl;
 using DreamSoftData.Repositories.Inventory.Interface;
-using DreamSoftData.Repositories.Public.Impl;
-using DreamSoftData.Repositories.Public.Interface;
+using DreamSoftData.Repositories.Menu.Impl;
+using DreamSoftData.Repositories.Menu.Interfaces;
 using DreamSoftData.Repositories.Sales.Impl;
 using DreamSoftData.Repositories.Sales.Interface;
 using Microsoft.Extensions.DependencyInjection;
@@ -43,6 +47,6 @@ public static class DreamSoftDataServicesBuilder
             .AddScoped<IProductsRepository, ProductsRepository>()
             .AddScoped<ISuppliersRepository, SuppliersRepository>()
             .AddScoped<IUnitsRepository, UnitsRepository>()
-            .AddScoped<IWarehousesRepository, WarehousesRepository>(); 
+            .AddScoped<IWarehousesRepository, WarehousesRepository>();
     }
 }

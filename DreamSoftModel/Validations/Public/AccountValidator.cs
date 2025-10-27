@@ -1,4 +1,4 @@
-﻿using DreamSoftModel.Models.Public;
+﻿using DreamSoftModel.Models.Authentication;
 using DreamSoftModel.Validations.Base;
 using FluentValidation;
 

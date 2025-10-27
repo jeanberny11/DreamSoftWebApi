@@ -1,12 +1,16 @@
-﻿using DreamSoftData.Entities.Public;
-using DreamSoftLogic.Services.Public.Impl;
-using DreamSoftLogic.Services.Public.Interface;
-using DreamSoftLogic.Services.SecurityConfig.Impl;
+﻿using DreamSoftLogic.Services.SecurityConfig.Impl;
 using DreamSoftLogic.Services.SecurityConfig.Interface;
 using DreamSoftLogic.Services.Inventory.Impl;
 using DreamSoftLogic.Services.Inventory.Interface;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
+using DreamSoftLogic.Services.Generics.Interfaces;
+using DreamSoftLogic.Services.Authentication.Interfaces;
+using DreamSoftLogic.Services.Authentication.Impl;
+using DreamSoftLogic.Services.Menu.Interfaces;
+using DreamSoftLogic.Services.Menu.Impl;
+using DreamSoftLogic.Services.Generics.Impl;
+using DreamSoftData.Entities.Authentication;
 
 namespace DreamSoftLogic.Config;
 
@@ -20,7 +24,7 @@ public static class DreamSoftLogicServicesBuilder
     public static IServiceCollection AddAllServices(this IServiceCollection services)
     {
         return services.AddScoped<IGenderServices, GenderServices>()
-            .AddScoped<ITokenServices, TokenServices>()
+            .AddScoped<ILoginServices, LoginServices>()
             .AddScoped<IAccountServices, AccountServices>()
             .AddScoped<IAccountTypeServices, AccountTypeServices>()
             .AddScoped<IUserServices, UserServices>()
