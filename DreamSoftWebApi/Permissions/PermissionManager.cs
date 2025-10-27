@@ -3,7 +3,8 @@ using System.Security.Claims;
 using System.Text.Json;
 using DreamSoftLogic.Exceptions.Security;
 using DreamSoftModel.Models.Exception;
-using DreamSoftModel.Models.Public;
+using DreamSoftModel.Models.Authentication;
+using DreamSoftModel.Models.Menu;
 
 namespace DreamSoftWebApi.Permissions;
 

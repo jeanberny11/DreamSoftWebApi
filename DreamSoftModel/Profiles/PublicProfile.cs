@@ -1,6 +1,10 @@
 ﻿using AutoMapper;
-using DreamSoftData.Entities.Public;
-using DreamSoftModel.Models.Public;
+using DreamSoftData.Entities.Authentication;
+using DreamSoftData.Entities.Menu;
+using DreamSoftData.Entities.Generics;
+using DreamSoftModel.Models.Authentication;
+using DreamSoftModel.Models.Menu;
+using DreamSoftModel.Models.Generics;
 
 namespace DreamSoftModel.Profiles;
 

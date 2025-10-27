@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using DreamSoftData.Entities.Authentication;
 using DreamSoftData.Entities.Base;
-using DreamSoftData.Entities.Public;
 
 namespace DreamSoftData.Entities.Inventory;
 

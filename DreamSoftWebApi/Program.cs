@@ -4,6 +4,7 @@ using DreamSoftData.Context;
 using DreamSoftLogic.Config;
 using DreamSoftModel.Config;
 using DreamSoftModel.Models.SecurityConfig;
+using DreamSoftWebApi.Middleware;
 using DreamSoftWebApi.Permissions;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -101,9 +102,10 @@ builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy",
-        b => b.AllowAnyOrigin()
+        b => b.WithOrigins("http://localhost:5173")
             .AllowAnyMethod()
-            .AllowAnyHeader());
+            .AllowAnyHeader()
+            .AllowCredentials());
 });
 
 
@@ -118,6 +120,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseCors("CorsPolicy");
+app.UseMiddleware<RateLimitingMiddleware>();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseMiddleware<PermissionManager>();

@@ -1,5 +1,7 @@
-﻿using DreamSoftData.Entities.Inventory;
-using DreamSoftData.Entities.Public;
+﻿using DreamSoftData.Entities.Authentication;
+using DreamSoftData.Entities.Generics;
+using DreamSoftData.Entities.Inventory;
+using DreamSoftData.Entities.Menu;
 using DreamSoftData.Entities.Sales;
 using Microsoft.EntityFrameworkCore;
 
