@@ -6,7 +6,7 @@ using DreamSoftData.Entities.Base;
 namespace DreamSoftData.Entities.Inventory;
 
 [Table("brands", Schema = "inventory")]
-public class Brands : IOSEntity<int>
+public class Brands : IOSEntity<int>, IActiveEntity
 {
     [Key]
     [Column("brandid")]

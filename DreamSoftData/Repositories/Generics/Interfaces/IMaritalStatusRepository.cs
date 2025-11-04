@@ -3,6 +3,6 @@ using DreamSoftData.Repositories.Base;
 
 namespace DreamSoftData.Repositories.Generics.Interfaces;
 
-public interface IMaritalStatusRepository : IGenericRepository<MaritalStatus, int>
+public interface IMaritalStatusRepository : IActiveGenericRepository<MaritalStatus, int>
 {
 }

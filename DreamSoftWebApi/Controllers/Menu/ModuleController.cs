@@ -11,6 +11,6 @@ namespace DreamSoftWebApi.Controllers.Menu;
 [Route("dreamsoftapi/[controller]")]
 [Authorize]
 [Permission("1", "Super User")]
-public class ModuleController(IModuleServices services) : GenericControllerBase<Module, int>(services)
+public class ModuleController(IModuleServices services) : ActiveGenericControllerBase<Module, int>(services)
 {
 }

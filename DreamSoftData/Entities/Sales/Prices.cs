@@ -5,7 +5,7 @@ using DreamSoftData.Entities.Base;
 namespace DreamSoftData.Entities.Sales;
 
 [Table("prices", Schema = "sales")]
-public class Prices : IEntity<int>
+public class Prices : IEntity<int>, IActiveEntity
 {
     [Key]
     [Column("priceid")]

@@ -11,6 +11,6 @@ namespace DreamSoftWebApi.Controllers.Authentication;
 [Route("dreamsoftapi/[controller]")]
 [Authorize]
 [Permission("1", "Super User")]
-public class RoleController(IRoleServices services) : GenericControllerBase<Role, int>(services)
+public class RoleController(IRoleServices services) : ActiveGenericControllerBase<Role, int>(services)
 {
 }

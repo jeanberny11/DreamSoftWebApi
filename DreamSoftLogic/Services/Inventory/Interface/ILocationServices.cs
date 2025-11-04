@@ -3,7 +3,7 @@ using DreamSoftModel.Models.Inventory;
 
 namespace DreamSoftLogic.Services.Inventory.Interface;
 
-public interface ILocationServices : IGenericServices<Location, int>
+public interface ILocationServices : IActiveGenericServices<Location, int>
 {
     // Add custom Location-specific service methods here if needed
 }

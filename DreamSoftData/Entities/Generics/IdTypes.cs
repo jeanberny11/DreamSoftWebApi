@@ -5,7 +5,8 @@ using DreamSoftData.Entities.Authentication;
 
 namespace DreamSoftData.Entities.Generics
 {
-    public class IdTypes:IEntity<int>
+    [Table("idtypes")]
+    public class IdTypes : IEntity<int>, IActiveEntity
     {
         [Key]
         [Column("idtypeid")]

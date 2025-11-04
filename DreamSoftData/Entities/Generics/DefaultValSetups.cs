@@ -14,5 +14,7 @@ namespace DreamSoftData.Entities.Generics
 
         [Column("newacctdefroleval")]
         public int NewAccountRoleId { get; set; }
+        [Column("defaultaccttypeid")]
+        public int DefaultAccountTypeId { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 
 namespace DreamSoftData.Repositories.Base;
 
-public abstract class GenericRepository<TE, T>(DreamSoftDbContext dbContext) : IGenericRepository<TE, T>
+public abstract class BaseRepository<TE, T>(DreamSoftDbContext dbContext) : IBaseRepository<TE, T>
     where TE : class, IEntity<T>
     where T : notnull
 {
@@ -98,5 +98,21 @@ public abstract class GenericRepository<TE, T>(DreamSoftDbContext dbContext) : I
             await SaveChangesAsync();
         }
         return result.Entity;
+    }
+}
+
+public abstract class ActiveGenericRepository<TE, T>(DreamSoftDbContext dbContext)
+    : BaseRepository<TE, T>(dbContext), IActiveGenericRepository<TE, T>
+    where TE : class, IEntity<T>, IActiveEntity
+    where T : notnull
+{
+    /// <summary>
+    /// Retrieve all entities filtered by the Active field.
+    /// </summary>
+    /// <param name="active">The value to filter by (true for active entities, false for inactive).</param>
+    /// <returns>A collection of entities matching the active status.</returns>
+    public virtual async Task<IEnumerable<TE>> GetByActiveAsync(bool active)
+    {
+        return await DbSet.Where(e => e.Active == active).ToListAsync();
     }
 }

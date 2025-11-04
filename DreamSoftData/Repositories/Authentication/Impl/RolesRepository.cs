@@ -6,6 +6,6 @@ using DreamSoftData.Repositories.Authentication.Interfaces;
 namespace DreamSoftData.Repositories.Authentication.Impl;
 
 public class RolesRepository(DreamSoftDbContext dbContext)
-    : GenericRepository<Roles, int>(dbContext), IRolesRepository
+    : ActiveGenericRepository<Roles, int>(dbContext), IRolesRepository
 {
 }

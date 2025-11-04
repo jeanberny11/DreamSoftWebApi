@@ -6,6 +6,6 @@ using DreamSoftData.Repositories.Inventory.Interface;
 namespace DreamSoftData.Repositories.Inventory.Impl;
 
 public class ModelsRepository(DreamSoftDbContext dbContext)
-    : GenericRepository<Models, int>(dbContext), IModelsRepository
+    : ActiveGenericRepository<Models, int>(dbContext), IModelsRepository
 {
 }

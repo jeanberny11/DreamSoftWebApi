@@ -54,3 +54,23 @@ public abstract class GenericControllerBase<TModel, TId>(IGenericServices<TModel
         throw new InvalidOperationException("An error occurs deleting the data");
     }
 }
+
+[ApiController]
+[Route("dreamsoftapi/[controller]")]
+public abstract class ActiveGenericControllerBase<TModel, TId>(IActiveGenericServices<TModel, TId> services)
+    : GenericControllerBase<TModel,TId>(services), IActiveGenericControllerBase<TModel, TId> where TModel : class where TId : notnull
+{
+    [HttpGet("[action]")]
+    [Permission(action: PermissionAction.Read)]
+    public virtual async Task<ActionResult<List<TModel>>> GetAllActive()
+    {
+        return await services.GetAllActiveAsync();
+    }
+
+    [HttpGet("[action]")]
+    [Permission(action: PermissionAction.Read)]
+    public virtual async Task<ActionResult<List<TModel>>> GetAllInActive()
+    {
+        return await services.GetAllActiveAsync();
+    }
+}

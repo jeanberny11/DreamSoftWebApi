@@ -3,6 +3,6 @@ using DreamSoftData.Repositories.Base;
 
 namespace DreamSoftData.Repositories.Inventory.Interface;
 
-public interface IModelsRepository : IGenericRepository<Models, int>
+public interface IModelsRepository : IActiveGenericRepository<Models, int>
 {
 }

@@ -2,6 +2,7 @@ using System.Text;
 using DreamSoftData.Config;
 using DreamSoftData.Context;
 using DreamSoftLogic.Config;
+using DreamSoftLogic.Services.Email;
 using DreamSoftModel.Config;
 using DreamSoftModel.Models.SecurityConfig;
 using DreamSoftWebApi.Middleware;
@@ -11,6 +12,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Resend;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +30,15 @@ builder.Services.AddDbContext<DreamSoftDbContext>(options =>
 builder.Services.AddEndpointsApiExplorer();
 // Register the DreamSoft jwt settings configuration
 builder.Services.Configure<JwtSetting>(builder.Configuration.GetSection("JwtSettings"));
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("Email"));
+builder.Services.AddOptions();
+builder.Services.AddHttpClient<ResendClient>();
+builder.Services.Configure<ResendClientOptions>(o =>
+{
+    o.ApiToken = builder.Configuration["Email:ResendApiKey"] ?? string.Empty;
+});
+builder.Services.AddTransient<IResend, ResendClient>();
+builder.Services.AddSingleton<IVerificationCodeManager, VerificationCodeManager>();
 
 builder.Services.AddSwaggerGen();
 builder.Services.ConfigureSwaggerGen(c =>
@@ -102,7 +113,7 @@ builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy",
-        b => b.WithOrigins("http://localhost:5173")
+        b => b.WithOrigins("http://localhost:5173", "http://localhost:5279", "https://localhost:7189")
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials());
@@ -118,8 +129,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
 app.UseCors("CorsPolicy");
+
+// Only redirect to HTTPS in production
+if (!app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
 app.UseMiddleware<RateLimitingMiddleware>();
 app.UseAuthentication();
 app.UseAuthorization();

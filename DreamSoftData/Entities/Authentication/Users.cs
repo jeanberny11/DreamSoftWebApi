@@ -5,7 +5,7 @@ using DreamSoftData.Entities.Base;
 namespace DreamSoftData.Entities.Authentication;
 
 [Table("users")]
-public class Users : IEntity<int>
+public class Users : IEntity<int>, IActiveEntity
 {
     [Key]
     [Column("userid")]
@@ -14,17 +14,17 @@ public class Users : IEntity<int>
 
     [Column("accountid")] public int AccountId { get; set; }
 
-    [Column("firstname")] [MaxLength(100)] public string FirstName { get; set; } = null!;
+    [Column("username")][MaxLength(50)] public string UserName { get; set; } = null!;
 
-    [Column("lastname")] [MaxLength(100)] public string LastName { get; set; } = null!;
-
-    [Column("username")] [MaxLength(50)] public string UserName { get; set; } = null!;
-
-    [Column("password")] [MaxLength(50)] public string Password { get; set; } = null!;
+    [Column("password")][MaxLength(50)] public string Password { get; set; } = null!;
 
     [Column("roleid")] public int RoleId { get; set; }
 
     [Column("active")] public bool Active { get; set; }
+
+    [Column("firstname")] public string FirstName { get; set; } = null!;
+
+    [Column("lastname")] public string LastName { get; set; } = null!;
 
     [ForeignKey("AccountId")] public Accounts Account { get; set; } = null!;
 

@@ -6,7 +6,7 @@ using DreamSoftData.Entities.Authentication;
 namespace DreamSoftData.Entities.Generics;
 
 [Table("countries")]
-public class Countries : IEntity<int>
+public class Countries : IEntity<int>, IActiveEntity
 {
     [Key]
     [Column("countryid")]

@@ -11,6 +11,6 @@ namespace DreamSoftWebApi.Controllers.Inventory;
 [Route("dreamsoftapi/[controller]")]
 [Authorize]
 [Permission("10", "Unidades")]
-public class UnitController(IUnitServices services) : GenericControllerBase<Unit, int>(services)
+public class UnitController(IUnitServices services) : ActiveGenericControllerBase<Unit, int>(services)
 {
 }

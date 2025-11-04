@@ -11,6 +11,6 @@ namespace DreamSoftWebApi.Controllers.Inventory;
 [Route("dreamsoftapi/[controller]")]
 [Authorize]
 [Permission("11", "Ubicaciones")]
-public class LocationController(ILocationServices services) : GenericControllerBase<Location, int>(services)
+public class LocationController(ILocationServices services) : ActiveGenericControllerBase<Location, int>(services)
 {
 }

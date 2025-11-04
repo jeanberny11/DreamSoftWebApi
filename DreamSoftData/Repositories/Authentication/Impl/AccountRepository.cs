@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace DreamSoftData.Repositories.Authentication.Impl;
 
 public class AccountRepository(DreamSoftDbContext dbContext)
-    : GenericRepository<Accounts, int>(dbContext), IAccountRepository
+    : ActiveGenericRepository<Accounts, int>(dbContext), IAccountRepository
 {
     public Task<bool> CheckEmailExistence(string email)
     {

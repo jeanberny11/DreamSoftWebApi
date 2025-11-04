@@ -8,7 +8,7 @@ using DreamSoftModel.Models.Inventory;
 namespace DreamSoftLogic.Services.Inventory.Impl;
 
 public class UnitServices(IUnitsRepository repository, IMapper mapper)
-    : GenericServices<Units, Unit, int>(repository, mapper), IUnitServices
+    : ActiveGenericServices<Units, Unit, int>(repository, mapper), IUnitServices
 {
     // Add custom Unit-specific business logic here if needed
 }

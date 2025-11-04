@@ -6,7 +6,7 @@ using DreamSoftData.Entities.Generics;
 namespace DreamSoftData.Entities.Authentication;
 
 [Table("accounts")]
-public class Accounts : IEntity<int>
+public class Accounts : IEntity<int>, IActiveEntity
 {
     [Key]
     [Column("accountid")]
@@ -38,6 +38,12 @@ public class Accounts : IEntity<int>
     [Column("active")] public bool Active { get; set; }
 
     [Column("cdate")] public DateTime CDate { get; set; }
+
+    [Column("emailverified")] public bool EmailVerified { get; set; }
+
+    [Column("phoneverified")] public bool PhoneVerified { get; set; }
+
+    [Column("idverified")] public bool IdVerified { get; set; }
 
     [Column("accountnumber")]
     [MaxLength(20)]

@@ -3,6 +3,6 @@ using DreamSoftData.Repositories.Base;
 
 namespace DreamSoftData.Repositories.Authentication.Interfaces;
 
-public interface IRolesRepository : IGenericRepository<Roles, int>
+public interface IRolesRepository : IActiveGenericRepository<Roles, int>
 {
 }

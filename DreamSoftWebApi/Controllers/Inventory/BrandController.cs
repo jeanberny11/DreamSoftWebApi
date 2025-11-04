@@ -11,6 +11,6 @@ namespace DreamSoftWebApi.Controllers.Inventory;
 [Route("dreamsoftapi/[controller]")]
 [Authorize]
 [Permission("7", "Marcas")]
-public class BrandController(IBrandServices services) : GenericControllerBase<Brand, int>(services)
+public class BrandController(IBrandServices services) : ActiveGenericControllerBase<Brand, int>(services)
 {
 }

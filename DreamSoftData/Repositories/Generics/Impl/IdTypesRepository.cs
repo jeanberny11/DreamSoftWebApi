@@ -5,7 +5,7 @@ using DreamSoftData.Repositories.Generics.Interfaces;
 
 namespace DreamSoftData.Repositories.Generics.Impl
 {
-    public class IdTypesRepository(DreamSoftDbContext dbContext) : GenericRepository<IdTypes,int>(dbContext),IIdtypesRepository
+    public class IdTypesRepository(DreamSoftDbContext dbContext) : ActiveGenericRepository<IdTypes, int>(dbContext), IIdtypesRepository
     {
     }
 }

@@ -3,7 +3,7 @@ using DreamSoftData.Repositories.Base;
 
 namespace DreamSoftData.Repositories.Authentication.Interfaces;
 
-public interface IAccountRepository : IGenericRepository<Accounts, int>
+public interface IAccountRepository : IActiveGenericRepository<Accounts, int>
 {
     public Task<bool> CheckAccountNumberExistence(string accountNumber);
     public Task<bool> CheckEmailExistence(string email);

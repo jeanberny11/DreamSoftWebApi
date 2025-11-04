@@ -8,7 +8,7 @@ using DreamSoftModel.Models.Inventory;
 namespace DreamSoftLogic.Services.Inventory.Impl;
 
 public class BrandServices(IBrandsRepository repository, IMapper mapper)
-    : GenericServices<Brands, Brand, int>(repository, mapper), IBrandServices
+    : ActiveGenericServices<Brands, Brand, int>(repository, mapper), IBrandServices
 {
     // Add custom Brand-specific business logic here if needed
 }

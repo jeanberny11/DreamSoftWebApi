@@ -3,6 +3,6 @@ using DreamSoftData.Repositories.Base;
 
 namespace DreamSoftData.Repositories.Menu.Interfaces;
 
-public interface IModulesRepository : IGenericRepository<Modules, int>
+public interface IModulesRepository : IActiveGenericRepository<Modules, int>
 {
 }

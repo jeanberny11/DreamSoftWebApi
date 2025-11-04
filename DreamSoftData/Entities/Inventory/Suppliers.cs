@@ -7,7 +7,7 @@ using DreamSoftData.Entities.Generics;
 namespace DreamSoftData.Entities.Inventory;
 
 [Table("suppliers", Schema = "inventory")]
-public class Suppliers : IEntity<int>
+public class Suppliers : IEntity<int>, IActiveEntity
 {
     [Key]
     [Column("supplierid")]

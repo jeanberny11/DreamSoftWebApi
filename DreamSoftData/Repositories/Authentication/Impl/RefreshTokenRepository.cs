@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace DreamSoftData.Repositories.Authentication.Impl;
 
 public class RefreshTokenRepository(DreamSoftDbContext dbContext)
-    : GenericRepository<RefreshTokens, int>(dbContext), IRefreshTokenRepository
+    : BaseRepository<RefreshTokens, int>(dbContext), IRefreshTokenRepository
 {
     private readonly DreamSoftDbContext _dbContext = dbContext;
 

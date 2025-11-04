@@ -2,7 +2,7 @@
 
 namespace DreamSoftData.Repositories.Base
 {
-    public interface IOSGenericRepository<TE, in T>:IGenericRepository<TE,T> where TE : class, IOSEntity<T> where T : notnull
+    public interface IOSGenericRepository<TE, in T> : IBaseRepository<TE, T> where TE : class, IOSEntity<T> where T : notnull
     {
         Task<IEnumerable<TE>> GetAllByAccountIdAsync(int accountId);               
     }

@@ -4,7 +4,7 @@ using DreamSoftData.Repositories.Base;
 
 namespace DreamSoftData.Repositories.Authentication.Interfaces;
 
-public interface IUsersRepository : IGenericRepository<Users, int>
+public interface IUsersRepository : IActiveGenericRepository<Users, int>
 {
     Task<Users?> GetAuthUser(int accountId, string username);
     Task<Users?> GetByUsername(string username);

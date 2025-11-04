@@ -3,6 +3,6 @@ using DreamSoftData.Repositories.Base;
 
 namespace DreamSoftData.Repositories.Authentication.Interfaces;
 
-public interface IAccountTypesRepository : IGenericRepository<AccountTypes, int>
+public interface IAccountTypesRepository : IActiveGenericRepository<AccountTypes, int>
 {
 }

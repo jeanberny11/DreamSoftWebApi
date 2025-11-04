@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace DreamSoftData.Repositories.Menu.Impl;
 
 public class RoleOptionsRepository(DreamSoftDbContext dbContext)
-    : GenericRepository<RoleOptions, int>(dbContext), IRoleOptionsRepository
+    : BaseRepository<RoleOptions, int>(dbContext), IRoleOptionsRepository
 {
     public async Task<IEnumerable<RoleOptions>> GetRolePermittedOptionsAsync(int roleId)
     {

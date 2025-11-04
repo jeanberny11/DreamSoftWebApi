@@ -35,6 +35,7 @@ public class DreamSoftDbContext(DbContextOptions<DreamSoftDbContext> options) : 
     public DbSet<Suppliers> Suppliers { get; set; } = null!;
     public DbSet<Units> Units { get; set; } = null!;
     public DbSet<Warehouses> Warehouses { get; set; } = null!;
+    public DbSet<IdTypes> IdTypes { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -57,6 +58,7 @@ public class DreamSoftDbContext(DbContextOptions<DreamSoftDbContext> options) : 
         modelBuilder.Entity<Users>().ToTable("users");
         modelBuilder.Entity<RefreshTokens>().ToTable("refreshtokens");
         modelBuilder.Entity<DefaultValSetups>().ToTable("defaultvaluesetup");
+        modelBuilder.Entity<IdTypes>().ToTable("idtypes");
         modelBuilder.Entity<Customers>().ToTable("customers", "sales");
         modelBuilder.Entity<Prices>().ToTable("prices", "sales");
         modelBuilder.Entity<MaritalStatus>().ToTable("maritalstatus");

@@ -3,7 +3,7 @@ using DreamSoftData.Repositories.Base;
 
 namespace DreamSoftData.Repositories.Generics.Interfaces
 {
-    public interface IIdtypesRepository:IGenericRepository<IdTypes,int>
+    public interface IIdtypesRepository : IActiveGenericRepository<IdTypes, int>
     {
     }
 }
