@@ -5,7 +5,7 @@ using DreamSoftData.Entities.Base;
 namespace DreamSoftData.Entities.Generics;
 
 [Table("maritalstatus")]
-public class MaritalStatus : IEntity<int>
+public class MaritalStatus : IEntity<int>, IActiveEntity
 {
     [Key]
     [Column("maritalstatusid")]

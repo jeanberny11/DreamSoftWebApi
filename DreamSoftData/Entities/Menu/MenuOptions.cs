@@ -5,7 +5,7 @@ using DreamSoftData.Entities.Base;
 namespace DreamSoftData.Entities.Menu;
 
 [Table("menuoptions")]
-public class MenuOptions : IEntity<int>
+public class MenuOptions : IEntity<int>, IActiveEntity
 {
     [Key]
     [Column("menuoptionid")]

@@ -3,6 +3,6 @@ using DreamSoftModel.Models.Authentication;
 
 namespace DreamSoftLogic.Services.Authentication.Interfaces;
 
-public interface IAccountTypeServices : IGenericServices<AccountType, int>
+public interface IAccountTypeServices : IActiveGenericServices<AccountType, int>
 {
 }

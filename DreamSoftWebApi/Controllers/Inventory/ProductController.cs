@@ -11,6 +11,6 @@ namespace DreamSoftWebApi.Controllers.Inventory;
 [Route("dreamsoftapi/[controller]")]
 [Authorize]
 [Permission("14", "Productos")]
-public class ProductController(IProductServices services) : GenericControllerBase<Product, int>(services)
+public class ProductController(IProductServices services) : ActiveGenericControllerBase<Product, int>(services)
 {
 }

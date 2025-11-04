@@ -8,6 +8,6 @@ using DreamSoftModel.Models.Generics;
 namespace DreamSoftLogic.Services.Generics.Impl;
 
 public class GenderServices(IGendersRepository repository, IMapper mapper)
-    : GenericServices<Genders, Gender, int>(repository, mapper), IGenderServices
+    : ActiveGenericServices<Genders, Gender, int>(repository, mapper), IGenderServices
 {
 }

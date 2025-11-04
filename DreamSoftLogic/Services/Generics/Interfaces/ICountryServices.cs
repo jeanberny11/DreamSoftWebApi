@@ -3,6 +3,6 @@ using DreamSoftModel.Models.Generics;
 
 namespace DreamSoftLogic.Services.Generics.Interfaces;
 
-public interface ICountryServices : IGenericServices<Country, int>
+public interface ICountryServices : IActiveGenericServices<Country, int>
 {
 }

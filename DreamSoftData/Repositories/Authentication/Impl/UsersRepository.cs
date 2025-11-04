@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace DreamSoftData.Repositories.Authentication.Impl;
 
 public class UsersRepository(DreamSoftDbContext dbContext)
-    : GenericRepository<Users, int>(dbContext), IUsersRepository
+    : ActiveGenericRepository<Users, int>(dbContext), IUsersRepository
 {
     public Task<Users?> GetAuthUser(int accountId, string username)
     {

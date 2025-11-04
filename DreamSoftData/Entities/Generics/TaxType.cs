@@ -5,7 +5,7 @@ using DreamSoftData.Entities.Base;
 namespace DreamSoftData.Entities.Generics;
 
 [Table("taxtype")]
-public class TaxType : IEntity<int>
+public class TaxType : IEntity<int>, IActiveEntity
 {
     [Key]
     [Column("taxtypeid")]

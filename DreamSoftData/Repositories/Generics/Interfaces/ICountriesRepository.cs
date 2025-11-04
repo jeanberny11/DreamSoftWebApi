@@ -3,6 +3,6 @@ using DreamSoftData.Repositories.Base;
 
 namespace DreamSoftData.Repositories.Generics.Interfaces;
 
-public interface ICountriesRepository : IGenericRepository<Countries, int>
+public interface ICountriesRepository : IActiveGenericRepository<Countries, int>
 {
 }

@@ -5,7 +5,7 @@ using DreamSoftData.Entities.Base;
 namespace DreamSoftData.Entities.Menu;
 
 [Table("modules")]
-public class Modules : IEntity<int>
+public class Modules : IEntity<int>, IActiveEntity
 {
     [Key]
     [Column("moduleid")]

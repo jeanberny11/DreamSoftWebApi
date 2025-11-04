@@ -11,6 +11,6 @@ namespace DreamSoftWebApi.Controllers.Inventory;
 [Route("dreamsoftapi/[controller]")]
 [Authorize]
 [Permission("13", "Almacenes")]
-public class WarehouseController(IWarehouseServices services) : GenericControllerBase<Warehouse, int>(services)
+public class WarehouseController(IWarehouseServices services) : ActiveGenericControllerBase<Warehouse, int>(services)
 {
 }

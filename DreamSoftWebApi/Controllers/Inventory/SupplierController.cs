@@ -11,6 +11,6 @@ namespace DreamSoftWebApi.Controllers.Inventory;
 [Route("dreamsoftapi/[controller]")]
 [Authorize]
 [Permission("12", "Suplidores")]
-public class SupplierController(ISupplierServices services) : GenericControllerBase<Supplier, int>(services)
+public class SupplierController(ISupplierServices services) : ActiveGenericControllerBase<Supplier, int>(services)
 {
 }

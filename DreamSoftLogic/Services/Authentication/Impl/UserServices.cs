@@ -8,6 +8,6 @@ using DreamSoftModel.Models.Authentication;
 namespace DreamSoftLogic.Services.Authentication.Impl;
 
 public class UserServices(IUsersRepository repository, IMapper mapper)
-    : GenericServices<Users, User, int>(repository, mapper), IUserServices
+    : ActiveGenericServices<Users, User, int>(repository, mapper), IUserServices
 {
 }

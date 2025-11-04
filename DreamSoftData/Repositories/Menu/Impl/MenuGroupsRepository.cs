@@ -6,6 +6,6 @@ using DreamSoftData.Repositories.Menu.Interfaces;
 namespace DreamSoftData.Repositories.Menu.Impl;
 
 public class MenuGroupsRepository(DreamSoftDbContext dbContext)
-    : GenericRepository<MenuGroups, int>(dbContext), IMenuGroupsRepository
+    : ActiveGenericRepository<MenuGroups, int>(dbContext), IMenuGroupsRepository
 {
 }

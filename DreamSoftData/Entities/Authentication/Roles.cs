@@ -6,7 +6,7 @@ using DreamSoftData.Entities.Menu;
 namespace DreamSoftData.Entities.Authentication;
 
 [Table("roles")]
-public class Roles : IEntity<int>
+public class Roles : IEntity<int>, IActiveEntity
 {
     [Key]
     [Column("roleid")]

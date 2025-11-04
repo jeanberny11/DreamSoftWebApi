@@ -11,6 +11,6 @@ namespace DreamSoftWebApi.Controllers.Inventory;
 [Route("dreamsoftapi/[controller]")]
 [Authorize]
 [Permission("9", "Categorias")]
-public class CategoryController(ICategoryServices services) : GenericControllerBase<Category, int>(services)
+public class CategoryController(ICategoryServices services) : ActiveGenericControllerBase<Category, int>(services)
 {
 }

@@ -3,6 +3,6 @@ using DreamSoftData.Repositories.Base;
 
 namespace DreamSoftData.Repositories.Generics.Interfaces;
 
-public interface ITaxTypeRepository : IGenericRepository<TaxType, int>
+public interface ITaxTypeRepository : IActiveGenericRepository<TaxType, int>
 {
 }

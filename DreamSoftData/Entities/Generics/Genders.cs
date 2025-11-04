@@ -5,7 +5,7 @@ using DreamSoftData.Entities.Base;
 namespace DreamSoftData.Entities.Generics;
 
 [Table("genders")]
-public class Genders : IEntity<int>
+public class Genders : IEntity<int>, IActiveEntity
 {
     [Key]
     [Column("genderid")]

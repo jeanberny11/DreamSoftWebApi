@@ -8,7 +8,7 @@ using DreamSoftModel.Models.Inventory;
 namespace DreamSoftLogic.Services.Inventory.Impl;
 
 public class SupplierServices(ISuppliersRepository repository, IMapper mapper)
-    : GenericServices<Suppliers, Supplier, int>(repository, mapper), ISupplierServices
+    : ActiveGenericServices<Suppliers, Supplier, int>(repository, mapper), ISupplierServices
 {
     // Add custom Supplier-specific business logic here if needed
 }

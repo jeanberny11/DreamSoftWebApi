@@ -8,7 +8,7 @@ using DreamSoftModel.Models.Inventory;
 namespace DreamSoftLogic.Services.Inventory.Impl;
 
 public class LocationServices(ILocationsRepository repository, IMapper mapper)
-    : GenericServices<Locations, Location, int>(repository, mapper), ILocationServices
+    : ActiveGenericServices<Locations, Location, int>(repository, mapper), ILocationServices
 {
     // Add custom Location-specific business logic here if needed
 }

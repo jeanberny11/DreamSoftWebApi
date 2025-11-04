@@ -6,7 +6,7 @@ using DreamSoftData.Entities.Base;
 namespace DreamSoftData.Entities.Inventory;
 
 [Table("categories", Schema = "inventory")]
-public class Categories : IEntity<int>
+public class Categories : IEntity<int>, IActiveEntity
 {
     [Key]
     [Column("categoryid")]

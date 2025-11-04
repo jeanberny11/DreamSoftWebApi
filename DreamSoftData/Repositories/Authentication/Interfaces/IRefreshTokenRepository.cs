@@ -3,7 +3,7 @@ using DreamSoftData.Repositories.Base;
 
 namespace DreamSoftData.Repositories.Authentication.Interfaces;
 
-public interface IRefreshTokenRepository : IGenericRepository<RefreshTokens, int>
+public interface IRefreshTokenRepository : IBaseRepository<RefreshTokens, int>
 {
     Task<bool> CheckTokenExistence(string token);
     Task<RefreshTokens?> GetRefreshTokenByToken(string token);

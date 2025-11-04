@@ -3,6 +3,6 @@ using DreamSoftModel.Models.Menu;
 
 namespace DreamSoftLogic.Services.Menu.Interfaces;
 
-public interface IMenuOptionServices : IGenericServices<MenuOption, int>
+public interface IMenuOptionServices : IActiveGenericServices<MenuOption, int>
 {
 }

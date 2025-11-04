@@ -5,7 +5,7 @@ using DreamSoftData.Entities.Base;
 namespace DreamSoftData.Entities.Menu;
 
 [Table("menugroups")]
-public class MenuGroups : IEntity<int>
+public class MenuGroups : IEntity<int>, IActiveEntity
 {
     [Key]
     [Column("menugroupid")]

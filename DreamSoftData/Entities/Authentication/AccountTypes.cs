@@ -5,7 +5,7 @@ using DreamSoftData.Entities.Base;
 namespace DreamSoftData.Entities.Authentication;
 
 [Table("accounttypes")]
-public class AccountTypes : IEntity<int>
+public class AccountTypes : IEntity<int>, IActiveEntity
 {
     [Key]
     [Column("accounttypeid")]

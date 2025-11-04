@@ -8,3 +8,9 @@ public interface IGenericServices<TM, in TI> where TM : class where TI : notnull
     Task<TM?> UpdateAsync(TM model);
     Task<TM?> DeleteAsync(TM model);
 }
+
+public interface IActiveGenericServices<TM, in TI> : IGenericServices<TM,TI> where TM : class where TI : notnull
+{
+    Task<List<TM>> GetAllActiveAsync();
+    Task<List<TM>> GetAllInactiveAsync();
+}

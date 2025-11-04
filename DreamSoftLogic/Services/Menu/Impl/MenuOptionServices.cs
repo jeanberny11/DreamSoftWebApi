@@ -8,6 +8,6 @@ using DreamSoftModel.Models.Menu;
 namespace DreamSoftLogic.Services.Menu.Impl;
 
 public class MenuOptionServices(IMenuOptionsRepository repository, IMapper mapper)
-    : GenericServices<MenuOptions, MenuOption, int>(repository, mapper), IMenuOptionServices
+    : ActiveGenericServices<MenuOptions, MenuOption, int>(repository, mapper), IMenuOptionServices
 {
 }

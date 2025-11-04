@@ -20,4 +20,7 @@ public class Account
     public string AccountNumber { get; set; } = null!;
     public string IdNumber { get; set; } = null!;
     public IdType IdType { get; set; } = null!;
+    public bool EmailVerified { get; set; }
+    public bool PhoneVerified { get; set; }
+    public bool IdVerified { get; set; }
 }

@@ -8,6 +8,6 @@ using DreamSoftModel.Models.Generics;
 namespace DreamSoftLogic.Services.Generics.Impl;
 
 public class CountryServices(ICountriesRepository repository, IMapper mapper)
-    : GenericServices<Countries, Country, int>(repository, mapper), ICountryServices
+    : ActiveGenericServices<Countries, Country, int>(repository, mapper), ICountryServices
 {
 }

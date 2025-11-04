@@ -3,6 +3,6 @@ using DreamSoftModel.Models.Authentication;
 
 namespace DreamSoftLogic.Services.Authentication.Interfaces;
 
-public interface IUserServices : IGenericServices<User, int>
+public interface IUserServices : IActiveGenericServices<User, int>
 {
 }

@@ -6,6 +6,6 @@ using DreamSoftData.Repositories.Generics.Interfaces;
 namespace DreamSoftData.Repositories.Generics.Impl;
 
 public class MaritalStatusRepository(DreamSoftDbContext dbContext)
-    : GenericRepository<MaritalStatus, int>(dbContext), IMaritalStatusRepository
+    : ActiveGenericRepository<MaritalStatus, int>(dbContext), IMaritalStatusRepository
 {
 }

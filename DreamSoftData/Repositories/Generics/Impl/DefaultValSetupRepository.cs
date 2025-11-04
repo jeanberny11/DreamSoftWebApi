@@ -5,7 +5,7 @@ using DreamSoftData.Repositories.Generics.Interfaces;
 
 namespace DreamSoftData.Repositories.Generics.Impl
 {
-    public class DefaultValSetupRepository(DreamSoftDbContext dbContext) : GenericRepository<DefaultValSetups, int>(dbContext), IDefaultValSetupsRepository
+    public class DefaultValSetupRepository(DreamSoftDbContext dbContext) : BaseRepository<DefaultValSetups, int>(dbContext), IDefaultValSetupsRepository
     {
     }
 }

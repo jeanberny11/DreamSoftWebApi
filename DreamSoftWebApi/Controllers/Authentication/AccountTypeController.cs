@@ -11,6 +11,6 @@ namespace DreamSoftWebApi.Controllers.Authentication;
 [Route("dreamsoftapi/[controller]")]
 [Authorize]
 [Permission("1", "Super User")]
-public class AccountTypeController(IAccountTypeServices services) : GenericControllerBase<AccountType, int>(services)
+public class AccountTypeController(IAccountTypeServices services) : ActiveGenericControllerBase<AccountType, int>(services)
 {
 }

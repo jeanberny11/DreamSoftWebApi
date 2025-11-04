@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DreamSoftData.Repositories.Base
 {
-    public abstract class OSGenericRepository<TE, T>(DreamSoftDbContext dbContext) : GenericRepository<TE, T>(dbContext), IOSGenericRepository<TE, T>
+    public abstract class OSGenericRepository<TE, T>(DreamSoftDbContext dbContext) : BaseRepository<TE, T>(dbContext), IOSGenericRepository<TE, T>
    where TE : class, IOSEntity<T>
    where T : notnull
     {

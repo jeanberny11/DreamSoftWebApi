@@ -3,6 +3,6 @@ using DreamSoftModel.Models.Generics;
 
 namespace DreamSoftLogic.Services.Generics.Interfaces;
 
-public interface IGenderServices : IGenericServices<Gender, int>
+public interface IGenderServices : IActiveGenericServices<Gender, int>
 {
 }

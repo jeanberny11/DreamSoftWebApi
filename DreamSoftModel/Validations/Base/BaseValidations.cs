@@ -50,8 +50,7 @@ namespace DreamSoftModel.Validations.Base
             return ruleBuilder
                 .NotEmpty().WithMessage("Username is required.")
                 .MinimumLength(5).WithMessage("Username must be at least 3 characters.")
-                .MaximumLength(50).WithMessage("Username must not exceed 50 characters.")
-                .Matches("^[a-zA-Z0-9]+$").WithMessage("Username can only contain letters and numbers.");
+                .MaximumLength(50).WithMessage("Username must not exceed 50 characters.");
         }
 
         public static IRuleBuilderOptions<T, int> AccountIdRule<T>(this IRuleBuilder<T, int> ruleBuilder)

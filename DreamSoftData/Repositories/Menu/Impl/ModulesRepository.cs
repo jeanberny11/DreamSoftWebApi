@@ -6,6 +6,6 @@ using DreamSoftData.Repositories.Menu.Interfaces;
 namespace DreamSoftData.Repositories.Menu.Impl;
 
 public class ModulesRepository(DreamSoftDbContext dbContext)
-    : GenericRepository<Modules, int>(dbContext), IModulesRepository
+    : ActiveGenericRepository<Modules, int>(dbContext), IModulesRepository
 {
 }

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 
 namespace DreamSoftData.Repositories.Base;
 
-public interface IGenericRepository<TE, in T> where TE : class, IEntity<T> where T : notnull
+public interface IBaseRepository<TE, in T> where TE : class, IEntity<T> where T : notnull
 {
     Task<IEnumerable<TE>> GetAllAsync();
 
@@ -17,4 +17,11 @@ public interface IGenericRepository<TE, in T> where TE : class, IEntity<T> where
     Task<TE> DeleteAsync(TE entity, bool autoPersist = true);
     Task SaveChangesAsync();
     Task<IDbContextTransaction> GetTransaction();
+}
+
+public interface IActiveGenericRepository<TE, in T> : IBaseRepository<TE, T>
+    where TE : class, IEntity<T>, IActiveEntity
+    where T : notnull
+{
+    Task<IEnumerable<TE>> GetByActiveAsync(bool active);
 }

@@ -8,6 +8,6 @@ using DreamSoftModel.Models.Authentication;
 namespace DreamSoftLogic.Services.Authentication.Impl;
 
 public class RoleServices(IRolesRepository repository, IMapper mapper)
-    : GenericServices<Roles, Role, int>(repository, mapper), IRoleServices
+    : ActiveGenericServices<Roles, Role, int>(repository, mapper), IRoleServices
 {
 }

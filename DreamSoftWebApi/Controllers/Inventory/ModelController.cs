@@ -11,6 +11,6 @@ namespace DreamSoftWebApi.Controllers.Inventory;
 [Route("dreamsoftapi/[controller]")]
 [Authorize]
 [Permission("8", "Modelos")]
-public class ModelController(IModelServices services) : GenericControllerBase<Model, int>(services)
+public class ModelController(IModelServices services) : ActiveGenericControllerBase<Model, int>(services)
 {
 }

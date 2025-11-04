@@ -3,6 +3,7 @@ using DreamSoftModel.Models.Generics;
 
 namespace DreamSoftLogic.Services.Generics.Interfaces;
 
-public interface IMunicipalityServices : IGenericServices<Municipality, int>
+public interface IMunicipalityServices : IActiveGenericServices<Municipality, int>
 {
+    Task<List<Municipality>> GetAllMunicipalitiesByProvinceidAsync(int provinceid);
 }

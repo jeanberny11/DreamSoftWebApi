@@ -11,6 +11,7 @@ using DreamSoftLogic.Services.Menu.Interfaces;
 using DreamSoftLogic.Services.Menu.Impl;
 using DreamSoftLogic.Services.Generics.Impl;
 using DreamSoftData.Entities.Authentication;
+using DreamSoftLogic.Services.Email;
 
 namespace DreamSoftLogic.Config;
 
@@ -24,6 +25,7 @@ public static class DreamSoftLogicServicesBuilder
     public static IServiceCollection AddAllServices(this IServiceCollection services)
     {
         return services.AddScoped<IGenderServices, GenderServices>()
+            .AddScoped<IIdTypeServices, IdTypeServices>()
             .AddScoped<ILoginServices, LoginServices>()
             .AddScoped<IAccountServices, AccountServices>()
             .AddScoped<IAccountTypeServices, AccountTypeServices>()
@@ -42,6 +44,12 @@ public static class DreamSoftLogicServicesBuilder
             .AddScoped<IUnitServices, UnitServices>()
             .AddScoped<ILocationServices, LocationServices>()
             .AddScoped<ISupplierServices, SupplierServices>()
-            .AddScoped<IWarehouseServices, WarehouseServices>();
+            .AddScoped<IWarehouseServices, WarehouseServices>()
+            .AddScoped<IEmailService, EmailService>()
+            .AddScoped<ICountryServices, CountryServices>()
+            .AddScoped<IProvinceServices, ProvinceServices>()
+            .AddScoped<IMunicipalityServices, MunicipalityServices>()
+            .AddScoped<IGenderServices, GenderServices>()
+            .AddScoped<IIdTypeServices, IdTypeServices>();
     }
 }

@@ -9,8 +9,53 @@ namespace DreamSoftWebApi.Controllers.Generics;
 
 [ApiController]
 [Route("dreamsoftapi/[controller]")]
-[Authorize]
-[Permission("2", "Generos")]
-public class GenderController(IGenderServices services) : GenericControllerBase<Gender, int>(services)
+public class GenderController(IGenderServices services) : ActiveGenericControllerBase<Gender, int>(services)
 {
+    [HttpPost("[action]")]
+    [Permission(action: PermissionAction.Create)]
+    [Authorize]
+    public override async Task<ActionResult<Gender>> Create([FromBody] Gender t)
+    {
+        return await base.Create(t);
+    }
+
+    [HttpPut("[action]")]
+    [Permission(action: PermissionAction.Update)]
+    [Authorize]
+    public override async Task<ActionResult<Gender>> Update([FromBody] Gender t)
+    {
+        return await base.Update(t);
+    }
+
+    [HttpDelete("[action]")]
+    [Permission(action: PermissionAction.Delete)]
+    [Authorize]
+    public override async Task<ActionResult<Gender>> Delete([FromBody] Gender t)
+    {
+        return await base.Delete(t);
+    }
+
+    [HttpGet("[action]/{id}")]
+    public override async Task<ActionResult<Gender>> GetById(int id)
+    {
+        return await base.GetById(id);
+    }
+
+    [HttpGet("[action]")]
+    public override async Task<ActionResult<List<Gender>>> GetAll()
+    {
+        return await base.GetAll();
+    }
+
+    [HttpGet("[action]")]
+    public override async Task<ActionResult<List<Gender>>> GetAllActive()
+    {
+        return await base.GetAllActive();
+    }
+
+    [HttpGet("[action]")]
+    public override async Task<ActionResult<List<Gender>>> GetAllInActive()
+    {
+        return await base.GetAllInActive();
+    }
 }

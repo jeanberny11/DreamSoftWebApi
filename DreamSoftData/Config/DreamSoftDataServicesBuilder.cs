@@ -32,6 +32,7 @@ public static class DreamSoftDataServicesBuilder
             .AddScoped<IRoleOptionsRepository, RoleOptionsRepository>()
             .AddScoped<IRolesRepository, RolesRepository>()
             .AddScoped<IUsersRepository, UsersRepository>()
+            .AddScoped<IIdtypesRepository, IdTypesRepository>()
             .AddScoped<IRefreshTokenRepository, RefreshTokenRepository>()
             .AddScoped<IDefaultValSetupsRepository,DefaultValSetupRepository>()
             .AddScoped<IAccountTypesRepository,AccountTypesRepository>()

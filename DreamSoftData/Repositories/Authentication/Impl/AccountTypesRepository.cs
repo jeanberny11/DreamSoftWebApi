@@ -6,6 +6,6 @@ using DreamSoftData.Repositories.Authentication.Interfaces;
 namespace DreamSoftData.Repositories.Authentication.Impl;
 
 public class AccountTypesRepository(DreamSoftDbContext dbContext)
-    : GenericRepository<AccountTypes, int>(dbContext), IAccountTypesRepository
+    : ActiveGenericRepository<AccountTypes, int>(dbContext), IAccountTypesRepository
 {
 }

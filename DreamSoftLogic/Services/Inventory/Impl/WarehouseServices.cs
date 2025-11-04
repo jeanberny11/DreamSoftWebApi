@@ -8,7 +8,7 @@ using DreamSoftModel.Models.Inventory;
 namespace DreamSoftLogic.Services.Inventory.Impl;
 
 public class WarehouseServices(IWarehousesRepository repository, IMapper mapper)
-    : GenericServices<Warehouses, Warehouse, int>(repository, mapper), IWarehouseServices
+    : ActiveGenericServices<Warehouses, Warehouse, int>(repository, mapper), IWarehouseServices
 {
     // Add custom Warehouse-specific business logic here if needed
 }

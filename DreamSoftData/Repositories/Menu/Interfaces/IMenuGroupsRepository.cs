@@ -3,6 +3,6 @@ using DreamSoftData.Repositories.Base;
 
 namespace DreamSoftData.Repositories.Menu.Interfaces;
 
-public interface IMenuGroupsRepository : IGenericRepository<MenuGroups, int>
+public interface IMenuGroupsRepository : IActiveGenericRepository<MenuGroups, int>
 {
 }

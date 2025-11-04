@@ -24,8 +24,6 @@ namespace DreamSoftModel.Validations.Public
                 .NotNull().WithMessage("Province is required.");
             RuleFor(x => x.Municipality)
                 .NotNull().WithMessage("Municipality is required.");
-            RuleFor(x => x.AccountType)
-                .NotNull().WithMessage("Account type is required.");
             RuleFor(x => x.Gender)
                 .NotNull().WithMessage("Gender is required.");
             RuleFor(x => x.IdNumber)
@@ -34,7 +32,7 @@ namespace DreamSoftModel.Validations.Public
             RuleFor(x => x.IdType)
                 .NotNull().WithMessage("Id type is required.");
             RuleFor(x => x.Password).PasswordRule();
-            RuleFor(x=>x.UserName).UserNameRule();
+            RuleFor(x=>x.Username).UserNameRule();
         }
 
        

@@ -6,7 +6,7 @@ using DreamSoftData.Entities.Authentication;
 namespace DreamSoftData.Entities.Inventory;
 
 [Table("units", Schema = "inventory")]
-public class Units : IEntity<int>
+public class Units : IEntity<int>, IActiveEntity
 {
     [Key]
     [Column("unitid")]

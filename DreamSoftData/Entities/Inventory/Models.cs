@@ -6,7 +6,7 @@ using DreamSoftData.Entities.Authentication;
 namespace DreamSoftData.Entities.Inventory;
 
 [Table("models", Schema = "inventory")]
-public class Models : IEntity<int>
+public class Models : IEntity<int>, IActiveEntity
 {
     [Key]
     [Column("modelid")]
