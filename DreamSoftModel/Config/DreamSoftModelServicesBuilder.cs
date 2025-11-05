@@ -30,6 +30,8 @@ public static class DreamSoftModelServicesBuilder
     {
         return services.AddValidatorsFromAssemblyContaining<AccountValidator>()
             .AddValidatorsFromAssemblyContaining<SupplierValidator>()
-            .AddValidatorsFromAssemblyContaining<ProductValidator>();
+            .AddValidatorsFromAssemblyContaining<ProductValidator>()
+            .AddValidatorsFromAssemblyContaining<DreamSoftModel.Validations.Authentication.ForgotPasswordValidator>()
+            .AddValidatorsFromAssemblyContaining<DreamSoftModel.Validations.Authentication.ResetPasswordValidator>();
     }
 }

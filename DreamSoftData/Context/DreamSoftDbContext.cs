@@ -22,6 +22,7 @@ public class DreamSoftDbContext(DbContextOptions<DreamSoftDbContext> options) : 
     public DbSet<Roles> Roles { get; set; } = null!;
     public DbSet<Users> Users { get; set; } = null!;
     public DbSet<RefreshTokens> RefreshTokens { get; set; } = null!;
+    public DbSet<PasswordResetTokens> PasswordResetTokens { get; set; } = null!;
     public DbSet<DefaultValSetups> DefaultValSetups { get; set; } = null!;
     public DbSet<Customers> Customers { get; set; } = null!;
     public DbSet<Prices> Prices { get; set; } = null!;
@@ -57,6 +58,14 @@ public class DreamSoftDbContext(DbContextOptions<DreamSoftDbContext> options) : 
         modelBuilder.Entity<Roles>().ToTable("roles");
         modelBuilder.Entity<Users>().ToTable("users");
         modelBuilder.Entity<RefreshTokens>().ToTable("refreshtokens");
+        modelBuilder.Entity<PasswordResetTokens>(entity =>
+        {
+            entity.ToTable("passwordresettokens");
+            entity.Property(e => e.ExpiresAt)
+                .HasColumnType("timestamp with time zone");
+            entity.Property(e => e.CreatedAt)
+                .HasColumnType("timestamp with time zone");
+        });
         modelBuilder.Entity<DefaultValSetups>().ToTable("defaultvaluesetup");
         modelBuilder.Entity<IdTypes>().ToTable("idtypes");
         modelBuilder.Entity<Customers>().ToTable("customers", "sales");

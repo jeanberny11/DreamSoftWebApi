@@ -27,8 +27,8 @@ public class RateLimitingMiddleware
         var ipAddress = context.Connection.RemoteIpAddress?.ToString() ?? "Unknown";
         var path = context.Request.Path.Value?.ToLower() ?? string.Empty;
 
-        // Only apply rate limiting to login endpoint
-        if (path.Contains("/login") && context.Request.Method == "POST")
+        // Only apply rate limiting to the actual login endpoint, not other endpoints in LoginController
+        if (path.EndsWith("/login") && context.Request.Method == "POST")
         {
             // Check if IP is currently locked out
             if (IsLockedOut(ipAddress))
