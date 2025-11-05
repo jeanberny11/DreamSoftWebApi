@@ -27,6 +27,7 @@ public static class DreamSoftLogicServicesBuilder
         return services.AddScoped<IGenderServices, GenderServices>()
             .AddScoped<IIdTypeServices, IdTypeServices>()
             .AddScoped<ILoginServices, LoginServices>()
+            .AddScoped<IPasswordResetServices, PasswordResetServices>()
             .AddScoped<IAccountServices, AccountServices>()
             .AddScoped<IAccountTypeServices, AccountTypeServices>()
             .AddScoped<IUserServices, UserServices>()

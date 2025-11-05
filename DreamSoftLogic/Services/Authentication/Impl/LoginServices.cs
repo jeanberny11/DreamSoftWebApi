@@ -180,11 +180,13 @@ public class LoginServices(
 
     public async Task LogoutAsync(string refreshToken, string ipaddress)
     {
-        var refreshTokenEntity = await refreshTokenRepository.GetRefreshTokenByToken(refreshToken) ??
-                                 throw new UnAuthorizedUserException("Invalid or expired refresh token.");
-        refreshTokenEntity.ExpiresAt = DateTime.UtcNow;
-        refreshTokenEntity.RevokedAt = DateTime.UtcNow;
-        refreshTokenEntity.RevokedByIp = ipaddress;
-        await refreshTokenRepository.UpdateAsync(refreshTokenEntity);
+        var refreshTokenEntity = await refreshTokenRepository.GetRefreshTokenByToken(refreshToken);
+        if (refreshTokenEntity != null)
+        {
+            refreshTokenEntity.ExpiresAt = DateTime.UtcNow;
+            refreshTokenEntity.RevokedAt = DateTime.UtcNow;
+            refreshTokenEntity.RevokedByIp = ipaddress;
+            await refreshTokenRepository.UpdateAsync(refreshTokenEntity);
+        }
     }
 }
